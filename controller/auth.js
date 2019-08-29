@@ -56,7 +56,7 @@ exports.register = async (req, res) => {
     if (!user) {
       req.body.password = prepareEncrypt.encrypt(req.body.password); //EncryptPass
       const token = jwt.sign({
-        userObj: req.body
+        userObj: user
       }, 'reactnative')
       User.create(req.body).then(data => {
         res.send({
